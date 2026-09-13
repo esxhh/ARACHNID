@@ -22,7 +22,9 @@ RUN mkdir -p /data
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
-EXPOSE 8000 8001
+EXPOSE 10000
+
+CMD ["python", "-m", "uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "10000"]
 
 # Used when this Dockerfile is deployed as a single service (Render, Fly,
 # a plain `docker run`) rather than via docker-compose, which overrides
